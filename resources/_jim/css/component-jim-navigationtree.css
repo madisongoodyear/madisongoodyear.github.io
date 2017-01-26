@@ -19,7 +19,7 @@ only screen and (                min-resolution: 2dppx)
 }
 
 #navigationtree { list-style-type: none; height: 100%; font-family: 'OpenSans-Regular'; }
-#navigationtree li { background-position: -70px 0; background-repeat: repeat-y; line-height: 28px; min-height: 20px; white-space: nowrap; margin-left: 18px; }
+#navigationtree li { background-position: -70px 0; background-repeat: repeat-y; line-height: 28px; white-space: nowrap; margin-left: 18px; }
 #navigationtree > li { margin-left: 0; }
 #navigationtree ins { display: inline-block; text-decoration: none; margin-right:5px; vertical-align:middle;}
 #navigationtree  ul { list-style-type: none; }
@@ -31,11 +31,10 @@ only screen and (                min-resolution: 2dppx)
 #navigationtree a:hover { opacity: 0.75; }
 #navigationtree a { color: #FFFFFF; white-space: nowrap; font-size:11px;}
 #navigationtree .folder  > a { color: #21C0C0; white-space: nowrap; font-size:11px;}
-#navigationtree .requirement-node { color: #21C0C0; white-space: nowrap; font-size:11px;}
-#navigationtree .requirement-node:hover { color: #EEEEEE;}
 
 /* requirements */
-#navigationtree .requirement-node {cursor: pointer;}
+#navigationtree .requirement-node { color: #21C0C0; white-space: nowrap; font-size:11px; cursor: pointer;}
+#navigationtree .requirement-node:hover { color: #EEEEEE;}
 #navigationtree .requirement-links {margin-bottom: 15px;}
 #navigationtree .requirement-field-content {margin-right: 8px; white-space: normal;}
 #navigationtree .requirement-field, #navigationtree .requirement-component, #navigationtree .requirement-integration{ margin-left: 6px; margin-bottom: 9px; color: #DDDDDD; white-space: nowrap; font-size:11px; line-height: 16px;}
@@ -62,6 +61,46 @@ only screen and (                min-resolution: 2dppx)
 #navigationtree .requirement-node:hover ins.expand { background-position: -160px -170px;}
 #navigationtree .requirement-node.active ins.expand {background-position: -120px -170px;}
 #navigationtree .requirement-node.active:hover ins.expand {background-position: -147px -170px;}
+
+#navigationtree #filterRequirements {
+    position: relative;
+    cursor: pointer;
+    line-height: 12px;
+    padding: 6px 0px 12px 0px; /*Using margin here bugged firefox... */
+    cursor: auto;
+}
+
+#navigationtree #filterRequirements > div > * {display: inline-block;}
+
+#navigationtree #filterRequirements span {    
+    color: #A2B5B9;
+    font-size: 10px;
+    vertical-align: top;
+    margin-right: 11px;
+}
+
+#navigationtree .filterCheckbox {
+    width: 10px;
+    height: 10px;
+    border: white solid 1px;
+    border-radius: 50%;
+    position: relative;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+#navigationtree .filterCheckbox > div {
+    width: 6px;
+    height: 6px;
+    background-color: #21C0C0;
+    border-radius: 50%;
+    left: calc(50% - 3px);
+    top: calc(50% - 3px);
+    position: absolute;
+    display: none;
+}
+#navigationtree .filterCheckbox.active {border-color: #21C0C0;}
+#navigationtree .filterCheckbox.active > div {display:block;}
 
 /* start splice images */
 #navigationtree li.leaf > ins {display: none;}

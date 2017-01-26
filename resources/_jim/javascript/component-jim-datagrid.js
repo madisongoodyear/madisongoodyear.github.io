@@ -20,8 +20,8 @@
   .on("update.dataview", ".datalist, .datagrid", function(event){
     event.stopPropagation();
     var $grid = jQuery(event.target || event.srcElement).closest(".datalist, .datagrid");
-    var oddRows = $grid.find(".datarow:not(.hidden):odd");
-    var evenRows = $grid.find(".datarow:not(.hidden):even");
+    var oddRows = $grid.children("tbody").children("*:not(.hidden):odd");
+    var evenRows = $grid.children("tbody").children("*:not(.hidden):even");
     oddRows.removeClass("odd").addClass("even");
     evenRows.removeClass("even").addClass("odd");
     if($grid.is(".datagrid"))
@@ -41,8 +41,8 @@
     $summary = jQuery(this);
     size = parseInt($grid.attr("size"), 10);
     if($grid.is(".datalist")){
-	    total = $grid.find(".datarow").length;
-	    start = $grid.find(".datarow:not(.hidden):first").index() + 1;	
+	    total = $grid.children("tbody").children().length;
+	    start = $grid.children("tbody").children("*:not(.hidden):first").index() + 1;	
     }else{
     	var $gridCells =  $grid.children("tbody").children("tr").children("td").children(".gridcell");
     	total = $gridCells.length;
@@ -61,7 +61,7 @@
     $index = jQuery(this);
     size = parseInt($grid.attr("size"), 10);
     if($grid.is(".datalist")){
-    	current = Math.floor($grid.find(".datarow:not(.hidden):first").index() / size) + 1;
+    	current = Math.floor($grid.children("tbody").children("*:not(.hidden):first").index() / size) + 1;
     }else{
     	var $gridCells =  $grid.children("tbody").children("tr").children("td").children(".gridcell");
     	var indexFirstVisibleGridCell = $gridCells.index($gridCells.filter(":not(.hidden):first"));
@@ -72,9 +72,9 @@
       current = 1;
     }
     if($grid.is(".datalist")){
-    	length = $grid.find(".datarow").length;
+    	length = $grid.children("tbody").children().length;
     }else{
-    	length = $grid.find(".gridcell").length;
+    	length = $grid.children("tbody").children("tr").children("td").children(".gridcell").length;
     }
     
     total = (size === 0) ? 1 : Math.ceil(length / size);
@@ -140,11 +140,10 @@
             if(!window.jimMobile || window.jimMobile && !jimUtil.isMobileDevice()){
               changeInputType($grid);
             }
-            $grid.trigger("update.dataview");
+            
             if(options) {
-              if(options.init) {
-                $grid.find(".datalist").dataview();
-              } else if (options.type === "pageload") {
+              $grid.find(".datalist,.datagrid").dataview();
+              if (options.type === "pageload") {
                 //Prevent infinite loop when a set value into a datalist is triggered from a pageLoad event defined on a datalist descendant.
                 if(!$grid.hasClass("pageLoadTriggered")){
                   $grid.addClass("pageLoadTriggered");
@@ -153,8 +152,10 @@
                 }
               }
             }
+            $grid.trigger("update.dataview");
           }
         }
+        jimUtil.bindDateWidgets($grid);
         jimUtil.refreshPageMinSize();
     },
     "updateDataGrid": function(instances, options) {
@@ -199,11 +200,10 @@
             if(!window.jimMobile || window.jimMobile && !jimUtil.isMobileDevice()){
               changeInputType($grid);
             }
-            $grid.trigger("update.dataview");
+            
             if(options) {
-              if(options.init) {
-                $grid.find(".datagrid").dataview();
-              } else if (options.type === "pageload") {
+              $grid.find(".datagrid,.datalist").dataview();
+              if (options.type === "pageload") {
                 //Prevent infinite loop when a set value into a datalist is triggered from a pageLoad event defined on a datalist descendant.
                 if(!$grid.hasClass("pageLoadTriggered")){
                   $grid.addClass("pageLoadTriggered");
@@ -212,8 +212,10 @@
                 }
               }
             }
+            $grid.trigger("update.dataview");
           }
         }
+        jimUtil.bindDateWidgets($grid);
         jimUtil.refreshPageMinSize();
     },
 	"getOrderedGridCells":function(init){

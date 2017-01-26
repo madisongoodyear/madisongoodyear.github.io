@@ -1976,6 +1976,33 @@
 			else if (wrapper.attr("hspacing") != 0 || (wrapper.attr("vspacing") != 0 && wrapper.hasClass("wrap")))
 			  wrapHorizontalLayoutObject(wrapper, true);
 		  }
+		},
+		"bindDateWidgets" : function ($target) {
+	      if(!window.jimMobile || (window.jimMobile && !jimMobile.isIOS())) {
+		    $target.find(".date").each(function(){
+		      var $date = jQuery(this);
+		      $date.find("input").datepicker();
+		      if($date.find("input").attr("readonly") != undefined){
+		    	$.datepicker._disableDatepicker($date.find("input")[0]);
+		      }
+		    });
+		  
+		    $target.find(".time").each(function(){
+		      var $date = jQuery(this);
+		      $date.find("input").timepicker();
+		      if($date.find("input").attr("readonly") != undefined){
+		    	$.datepicker._disableDatepicker($date.find("input")[0]);
+		      }
+		    });
+		
+		    $target.find(".datetime").each(function(){
+		      var $date = jQuery(this);
+		      $date.find("input").datetimepicker();
+		      if($date.find("input").attr("readonly") != undefined){
+		        $.datepicker._disableDatepicker($date.find("input")[0]);
+		      }
+		    });
+	      }
 		}
     };
   /* END UTILITY FUNCTIONS */

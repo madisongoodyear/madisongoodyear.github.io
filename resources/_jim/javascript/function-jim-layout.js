@@ -257,6 +257,9 @@
       
       if(jimMain.isPopup(window)) {
         $sidepanel.trigger("closePane");
+         setTimeout(function () {
+			  jimLayout.endLayoutAnimation();
+		  }, 500);
       }
     },
     "setSidePanelLayout": setSidePanelLayout,

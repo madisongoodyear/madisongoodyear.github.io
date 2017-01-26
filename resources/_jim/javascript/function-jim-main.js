@@ -455,6 +455,14 @@
 	  	window.jimComments.updateComments();
     	if($target.is("#simulation")) {
     	  $target.trigger("loadcomponent");
+    	  
+   	      var svgs = $("#simulation .datagrid div.image,#simulation .datalist div.image");
+			jQuery.each(svgs, function (index, value) {
+			var obj = $(value);
+			var overlay = obj.attr("overlay");
+			if (overlay != undefined) jimUtil.changeSVGColor(obj, overlay);
+		  });
+			
     	  jimUtil.wrapAllDataVerticalLayouts(); // Wrap vertical layouts in datagrids/datalists
     	  jimUtil.wrapAllDataHorizontalLayouts();
        	  $navigationTree.trigger("load", [urlHistory.getActive().url]);
@@ -472,6 +480,7 @@
 			jimRequirements.showRequirement(jimRequirements.openRequirementByID);
 			jimRequirements.openRequirementByID = "";
 		  }
+	      if (!jimUtil.isMobileDevice()) jimRequirements.filterRequirements();
     	}
     	
     	var sidepanel = $("#sidepanel");

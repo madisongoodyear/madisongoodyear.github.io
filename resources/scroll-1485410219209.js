@@ -7,8 +7,8 @@
             jQuery(".s-d636a1d1-9463-46af-b68c-9dd872450f20 .ui-page").overscroll({ showThumbs:true, direction:'vertical' });
             jQuery(".s-0cdc0f1f-b5f6-456e-95d1-1a9a12338089 .ui-page").overscroll({ showThumbs:true, direction:'vertical' });
             jQuery(".s-34fe0f3c-1bf0-46e5-b887-58f8f7d5d1b9 .ui-page").overscroll({ showThumbs:true, direction:'vertical' });
-            jQuery(".s-7e691661-d5ac-42a2-8278-1720946849d3 .ui-page").overscroll({ showThumbs:true, direction:'vertical' });
             jQuery(".s-9aefb268-f26b-4812-b012-3a3955bc31c3 .ui-page").overscroll({ showThumbs:true, direction:'vertical' });
+            jQuery(".s-7e691661-d5ac-42a2-8278-1720946849d3 .ui-page").overscroll({ showThumbs:true, direction:'vertical' });
             jQuery(".s-fae93e80-750a-459e-a5d4-e6c61f79aade .ui-page").overscroll({ showThumbs:true, direction:'vertical' });
             jQuery(".s-d5112630-04e3-4983-9d19-e0f686622ad6 .ui-page").overscroll({ showThumbs:true, direction:'vertical' });
             jQuery(".s-b1d0fef2-6765-4970-b8a5-1f7f59ab6814 .ui-page").overscroll({ showThumbs:true, direction:'vertical' });

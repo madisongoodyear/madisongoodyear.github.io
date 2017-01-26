@@ -8,6 +8,10 @@
 	  $requirements = jQuery("#sidepanel .requirement .requirement-node"),
 	  $reqComponents = jQuery("#sidepanel .requirement .requirement-component");
 	  $reqIntegrations = jQuery("#sidepanel .requirement .requirement-integration");
+	  $reqFilter = jQuery("#sidepanel .requirement #filterRequirements"),
+	  $allRequirements = jQuery("#sidepanel .requirement .filterAllRequirements"),
+	  $screenRequirements = jQuery("#sidepanel .requirement .filterScreenRequirements");
+	  
 	  
   $navigationTree
     .click(function(event) {
@@ -70,7 +74,6 @@
   $reqComponents.click(function(event) {
   	var obj = $(this);
   	showRequirementElement(obj);
-  
   });
   
    $reqIntegrations.click(function(event) {
@@ -79,6 +82,36 @@
 
   	window.open(url, '_blank');
   });
+   
+  $allRequirements.click(function(event) {
+    if (!$allRequirements.hasClass("active")) {
+  	  $allRequirements.addClass("active");
+  	  $screenRequirements.removeClass("active");
+	  $reqFilter.parent().children().css("display","");
+  	}
+  });
+  
+  $screenRequirements.click(function(event) {
+	if (!$screenRequirements.hasClass("active")) {
+	  $screenRequirements.addClass("active");
+	  $allRequirements.removeClass("active");
+	  filterRequirements();
+	}
+  });
+  
+  function filterRequirements() {
+  	var currentScreen = $("#simulation").attr('class').match(/(?:s-|t-|sc-)[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/g);
+  	currentScreen = ((currentScreen == null) ? "" : currentScreen).concat($(".master").map(function () {return this.id;}).toArray());
+	  
+  	$requirements.each(function (index, value) {
+  	  var object = $(value).closest("li");
+  	  var link = object.find(".requirement-component");
+			
+  	  if (link.length <= 0 || !(currentScreen.indexOf(link.attr("screen")) > -1))
+	  	object.css("display","none");
+    });
+  }
+  
  function selectPanelTab(element){
  	var parent = $(element.parent());
  	if (!element.hasClass("active") && !parent.hasClass("animation")) {
@@ -121,6 +154,7 @@
   		setTimeout(function () {parent.removeClass("animation"); newActive.css({"height":""})}, 450);
   	}
  }
+ 
  function selectRequirement(element){
  	element.closest(".section").css("height", "");
 	
@@ -199,7 +233,13 @@
 		selectPanelTab(jQuery("#requirementsTab"));
 		selectRequirement(element.closest(".requirement-content").siblings(".requirement-node"));
 	},
-	"openRequirementByID" : ""
+	"openRequirementByID" : "",
+	"filterRequirements" : function() {
+	  if ($screenRequirements.hasClass("active")) {
+		$reqFilter.parent().children().css("display","");
+		filterRequirements();
+	  }
+	}
   }
   window.jimRequirements = jimRequirements;
   

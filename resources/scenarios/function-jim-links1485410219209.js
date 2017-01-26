@@ -74,6 +74,26 @@
         "5e6e88f1-913e-4eb8-96eb-e0cdfe2dd9ba"
       ]
     },
+    "9aefb268-f26b-4812-b012-3a3955bc31c3" : {
+      "Background_Contact" : [
+        "5e6e88f1-913e-4eb8-96eb-e0cdfe2dd9ba"
+      ],
+      "SwipeAtoB" : [
+        "1e188b57-4a95-4f92-95c1-f85fe9111e2a"
+      ],
+      "TapAtoB" : [
+        "1e188b57-4a95-4f92-95c1-f85fe9111e2a"
+      ],
+      "Favorite_Back" : [
+        "5e6e88f1-913e-4eb8-96eb-e0cdfe2dd9ba"
+      ],
+      "Button_2" : [
+        "34fe0f3c-1bf0-46e5-b887-58f8f7d5d1b9"
+      ],
+      "Button_3" : [
+        "5e6e88f1-913e-4eb8-96eb-e0cdfe2dd9ba"
+      ]
+    },
     "7e691661-d5ac-42a2-8278-1720946849d3" : {
       "Panel_1" : [
         "79c25df8-77c1-4e55-8363-c417b2711a6e"
@@ -107,26 +127,6 @@
       ],
       "Image_5" : [
         "b1d0fef2-6765-4970-b8a5-1f7f59ab6814"
-      ]
-    },
-    "9aefb268-f26b-4812-b012-3a3955bc31c3" : {
-      "Background_Contact" : [
-        "5e6e88f1-913e-4eb8-96eb-e0cdfe2dd9ba"
-      ],
-      "SwipeAtoB" : [
-        "1e188b57-4a95-4f92-95c1-f85fe9111e2a"
-      ],
-      "TapAtoB" : [
-        "1e188b57-4a95-4f92-95c1-f85fe9111e2a"
-      ],
-      "Favorite_Back" : [
-        "5e6e88f1-913e-4eb8-96eb-e0cdfe2dd9ba"
-      ],
-      "Button_2" : [
-        "34fe0f3c-1bf0-46e5-b887-58f8f7d5d1b9"
-      ],
-      "Button_3" : [
-        "5e6e88f1-913e-4eb8-96eb-e0cdfe2dd9ba"
       ]
     },
     "fae93e80-750a-459e-a5d4-e6c61f79aade" : {
